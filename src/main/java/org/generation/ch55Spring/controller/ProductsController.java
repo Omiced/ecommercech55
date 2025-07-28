@@ -47,5 +47,4 @@ public class ProductsController {
         return this.productsService.updateProductById(id, productUpdated);
     }
 
-
 }
