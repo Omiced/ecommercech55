@@ -73,4 +73,11 @@ public class UsersServiceImpl implements UsersService {
         user.getDirections().add(direction);
         return usersRepository.save(user);
     }
+
+    @Override
+    public boolean validateUser(Users user) {
+        Optional<Users> optionalUser = usersRepository.findByEmail(user.getEmail());
+        if(optionalUser.isEmpty()) throw new IllegalArgumentException("El correo o contraseña son incorrectos");
+        return passwordEncoder.matches(user.getPassword(),optionalUser.get().getPassword());
+    }
 }

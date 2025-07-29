@@ -17,4 +17,6 @@ public interface UsersService {
     Users updateUserById(Long id, Users userUpdated);
 
     Users addDirectionUser(Long id, DirectionsRequest directionsRequest);
+
+    boolean validateUser(Users user);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //http://localhost:8080/api/users
+@CrossOrigin
 @RestController
 @RequestMapping(path="/api/users")
 @AllArgsConstructor
@@ -44,6 +45,12 @@ public class UsersController {
     public Users addUserDirection(@PathVariable("userId")Long id, @RequestBody DirectionsRequest directionsRequest){
         return usersService.addDirectionUser(id, directionsRequest);
     }
+
+    @PostMapping(path="login")//http://localhost:8080/api/users/login
+    public boolean loginUser(@RequestBody Users user){
+        return usersService.validateUser(user);
+    }
+
 
 
 
